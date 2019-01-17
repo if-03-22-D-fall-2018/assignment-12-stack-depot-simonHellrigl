@@ -61,11 +61,16 @@ bool memcheck_validate() {
 		_do_reset();
 		return false;
 	}
+	int not_freed_cnt = 0;
 	for (int i = 0; i < MAX_ALLOCS; i++){
 		if (allocs[i].pntr != 0 && !allocs[i].freed){
-			_do_reset();
-			return false;
+			not_freed_cnt++;
 		}
+	}
+	if (not_freed_cnt > 0) {
+		_do_reset();
+		printf("%d allocations have not been freed\n", not_freed_cnt);
+		return false;
 	}
 	_do_reset();
 	return true;
