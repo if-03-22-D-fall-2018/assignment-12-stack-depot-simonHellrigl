@@ -12,7 +12,7 @@ Those workers who use the intermediate products to continue goods production alw
 You might have already guessed it: your task is to implement a stack.
 A stack is basically just a list which follows the **last** in, **first** out pattern (in contrast to a queue which is last in, last out).
 You already know about stacks, because all our function local variables are also placed on a stack.
-Surprisingly, stacks are not only used in CS but in the real world as well! :)
+Surprisingly, stacks are not only used in computer science but in the real world as well! :)
 
 ## Implement the storage area logic
 As mentioned before, we can only put at most three boxes on top of each other before starting a new stack.
