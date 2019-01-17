@@ -26,4 +26,5 @@ Thus, we can reuse our previous implementation with a bit of extra logic on top.
 
 ## Take care of your memory
 As usual, in addition to implementing the logic required for the unit tests make sure you haven't created any memory leaks!
-You may use the provided main program run (`make all`) together with `valgrind --tool=memcheck ./depot_prg` to check for issues.
+An easy way to ensure this and **required for passing the unit tests** is to use **`smalloc`** instead of `malloc` and **`sfree`** instead of `free`.
+Those two wrappers will keep track of your allocations and tell you if you have properly cleaned everything you should have.
