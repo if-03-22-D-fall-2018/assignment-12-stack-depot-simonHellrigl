@@ -1,3 +1,5 @@
+#include "memcheck.h"
+
 #ifndef SPL_STACK_H
 #define SPL_STACK_H
 

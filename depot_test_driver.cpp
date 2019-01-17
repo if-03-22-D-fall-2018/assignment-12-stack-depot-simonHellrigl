@@ -6,6 +6,7 @@
 
 #include "shortcut.h"
 #include "test_depot.h"
+#include "memcheck.h"
 
 int main(int argc, char *argv[])
 {

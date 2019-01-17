@@ -6,7 +6,7 @@ struct _depot {
 };
 
 Depot* depot_create() {
-    Depot *depot = (Depot*) malloc(sizeof(Depot));
+    Depot *depot = (Depot*) smalloc(sizeof(Depot));
 	depot->stack_of_stacks = stack_create();
     return depot;
 }
@@ -15,8 +15,8 @@ void depot_delete(Depot *depot) {
 	while(stack_get_count(depot->stack_of_stacks) != 0){
 		stack_delete((Stack*) stack_pop(depot->stack_of_stacks));
 	}
-	free(depot->stack_of_stacks);
-	free(depot);
+	sfree(depot->stack_of_stacks);
+	sfree(depot);
 }
 
 void _add_to_new_stack(Depot *depot, Product *product) {

@@ -13,7 +13,7 @@ struct _stack {
 };
 
 Stack* stack_create() {
-    Stack *stack = (Stack*) malloc(sizeof(Stack));
+    Stack *stack = (Stack*) smalloc(sizeof(Stack));
     stack->head = 0;
     stack->count = 0;
     return stack;
@@ -24,13 +24,13 @@ void stack_delete(Stack *stack) {
     while (node) {
         Node *tmp = node;
         node = node->next;
-        free(tmp);
+        sfree(tmp);
     }
-    free(stack);
+    sfree(stack);
 }
 
 void stack_push(Stack *stack, void *data) {
-    Node *new_node = (Node*) malloc(sizeof(Node));
+    Node *new_node = (Node*) smalloc(sizeof(Node));
     new_node->data = data;
     new_node->next = stack->head;
     stack->head = new_node;
@@ -49,7 +49,7 @@ void* stack_pop(Stack *stack) {
     stack->head = top->next;
     stack->count--;
     void *data = top->data;
-    free(top);
+    sfree(top);
     return data;
 }
 

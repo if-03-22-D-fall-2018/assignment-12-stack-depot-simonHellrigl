@@ -3,14 +3,14 @@ CCLINK			= g++
 LIBS				=
 CCOPTIONS		= -Wall -pedantic -g
 LDOPTIONS		=
-HDRS				= stack.h depot.h test_depot.h shortcut.h
+HDRS				= stack.h depot.h test_depot.h shortcut.h memcheck.h
 
 TEST = test_depot
 PROGRAM = depot_prg
 
 TESTOBJECT = depot_test_driver.o
 MAINOBJECT = depot_main_driver.o
-OBJS = shortcut.o stack.o test_depot.o depot.o
+OBJS = shortcut.o stack.o test_depot.o depot.o memcheck.o
 
 #DOXY            = /Applications/Doxygen/Doxygen.app/Contents/Resources/doxygen
 

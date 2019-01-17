@@ -12,6 +12,7 @@ TEST(create_stack)
 	Stack *stack = stack_create();
 	ASSERT_FALSE(stack == 0, "Stack has to be created");
 	stack_delete(stack);
+	ASSERT_EQUALS(true, memcheck_validate());
 }
 
 TEST(add_items_to_stack)
@@ -30,6 +31,7 @@ TEST(add_items_to_stack)
 	ASSERT_EQUALS(stack_get_count(stack), 3);
 
 	stack_delete(stack);
+	ASSERT_EQUALS(true, memcheck_validate());
 }
 
 TEST(get_items_from_stack)
@@ -55,6 +57,7 @@ TEST(get_items_from_stack)
 	ASSERT_EQUALS(stack_get_count(stack), 0);
 
 	stack_delete(stack);
+	ASSERT_EQUALS(true, memcheck_validate());
 }
 
 TEST(create_depot)
@@ -62,6 +65,7 @@ TEST(create_depot)
 	Depot *depot = depot_create();
 	ASSERT_FALSE(depot == 0, "Depot has to be created");
 	depot_delete(depot);
+	ASSERT_EQUALS(true, memcheck_validate());
 }
 
 TEST(fill_depot)
@@ -87,6 +91,7 @@ TEST(fill_depot)
 	ASSERT_EQUALS(depot_get_stack_count(depot), 2);
 
 	depot_delete(depot);
+	ASSERT_EQUALS(true, memcheck_validate());
 }
 
 TEST(use_depot)
@@ -131,4 +136,5 @@ TEST(use_depot)
 	ASSERT_EQUALS(depot_get_stack_count(depot), 1);
 
 	depot_delete(depot);
+	ASSERT_EQUALS(true, memcheck_validate());
 }
