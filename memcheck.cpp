@@ -67,11 +67,10 @@ bool memcheck_validate() {
 			not_freed_cnt++;
 		}
 	}
-	if (not_freed_cnt > 0) {
-		_do_reset();
+	_do_reset();
+	if (not_freed_cnt > 0) {		
 		printf("%d allocations have not been freed\n", not_freed_cnt);
 		return false;
 	}
-	_do_reset();
 	return true;
 }
