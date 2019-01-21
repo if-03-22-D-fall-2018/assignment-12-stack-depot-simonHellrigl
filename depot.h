@@ -5,7 +5,7 @@
 
 #define STACK_SIZE_LIMIT 3
 
-typedef struct _depot Depot;
+typedef struct DepotImplementation* Depot;
 
 struct Product {
     int serial_no;
@@ -13,27 +13,28 @@ struct Product {
 
 /**
  * Used to create a depot
+ * @return The newly created depot
  */
-Depot* depot_create();
+Depot create_depot();
 
 /**
  * Used to free all memory the supplied depot allocated
  */
-void depot_delete(Depot *depot);
+void delete_depot(Depot depot);
 
 /**
  * Adds a product to the depot
  */
-void depot_push(Depot *depot, Product *product);
+void push_depot(Depot depot, Product *product);
 
 /**
  * Returns the number of item stacks currently in the depot
  */
-int depot_get_stack_count(Depot *depot);
+int get_count(Depot depot);
 
 /**
  * Removes and returns a product from the depot
  */
-Product* depot_pop(Depot *depot);
+Product* pop_depot(Depot depot);
 
 #endif //SPL_DEPOT_H

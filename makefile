@@ -42,23 +42,31 @@ test: $(TEST)
 
 #sets project as sample solution
 setsample:
-	cp car.cpp.sample car.cpp
-	cp car.h.sample car.h
+	cp stack.cpp.sample stack.cpp
+	cp stack.h.sample stack.h
+	cp depot.cpp.sample depot.cpp
+	cp depot.h.sample depot.h
 
 #sets project as assignment
 setassignment:
-	cp car.cpp.assignment car.cpp
-	cp car.h.assignment car.h
+	cp stack.cpp.assignment stack.cpp
+	cp stack.h.assignment stack.h
+	cp depot.cpp.assignment depot.cpp
+	cp depot.h.assignment depot.h
 
 # defines current state of project as sample solution
 definesample:
-	cp car.cpp car.cpp.sample
-	cp car.h car.h.sample
+	cp stack.cpp stack.cpp.sample
+	cp stack.h stack.h.sample
+	cp depot.cpp depot.cpp.sample
+	cp depot.h depot.h.sample
 
 # defines current sate of project as assignment
 defineassignment:
-	cp car.cpp car.cpp.assignment
-	cp car.h car.h.assignment
+	cp stack.cpp stack.cpp.assignment
+	cp stack.h stack.h.assignment
+	cp depot.cpp depot.cpp.assignment
+	cp depot.h depot.h.assignment
 
 # creates a folder which can serve as a publishable assignment
 assignmentfolder:

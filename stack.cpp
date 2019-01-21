@@ -2,26 +2,26 @@
 #include "stack.h"
 
 
-struct _node {
-    struct _node *next;
-    void *data;
+struct Node {
+    struct Node* next;
+    void* data;
 };
 
-struct _stack {
-    struct _node *head;
+struct StackImplementation {
+    struct Node* head;
     int count;
 };
 
-Stack* stack_create() {
-    Stack *stack = (Stack*) smalloc(sizeof(Stack));
+Stack create_stack() {
+    Stack stack = (Stack) smalloc(sizeof(StackImplementation));
     stack->head = 0;
     stack->count = 0;
     return stack;
 }
 
-void stack_delete(Stack *stack) {
-    Node *node = (Node*) stack->head;
-    while (node) {
+void delete_stack(Stack stack) {
+    struct Node* node = stack->head;
+    while (node != 0) {
         Node *tmp = node;
         node = node->next;
         sfree(tmp);
@@ -29,32 +29,32 @@ void stack_delete(Stack *stack) {
     sfree(stack);
 }
 
-void stack_push(Stack *stack, void *data) {
-    Node *new_node = (Node*) smalloc(sizeof(Node));
+void push_stack(Stack stack, void *data) {
+    Node* new_node = (Node*) smalloc(sizeof(Node));
     new_node->data = data;
     new_node->next = stack->head;
     stack->head = new_node;
     stack->count++;
 }
 
-int stack_get_count(Stack *stack) {
+int get_count(Stack stack) {
     return stack->count;
 }
 
-void* stack_pop(Stack *stack) {
-    if (stack_get_count(stack) == 0){
+void* pop_stack(Stack stack) {
+    if (get_count(stack) == 0){
         return 0;
     }
-    Node *top = stack->head;
+    Node* top = stack->head;
     stack->head = top->next;
     stack->count--;
-    void *data = top->data;
+    void* data = top->data;
     sfree(top);
     return data;
 }
 
-void* stack_peek(Stack *stack) {
-    if (stack_get_count(stack) == 0){
+void* peek_stack(Stack stack) {
+    if (get_count(stack) == 0){
         return 0;
     }
     return stack->head->data;
