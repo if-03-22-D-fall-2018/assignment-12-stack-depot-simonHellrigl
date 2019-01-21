@@ -12,7 +12,9 @@
 #ifndef ___SHORTCUT_H
 #define ___SHORTCUT_H
 
-/** TestCase is the struct to define one test case. A test case can
+/**
+** @private
+** TestCase is the struct to define one test case. A test case can
 *** be added to a test. If the test is run all added test cases are
 *** run and the result of the run of each test case is checked automatically.
 */

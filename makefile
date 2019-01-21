@@ -12,7 +12,7 @@ TESTOBJECT = depot_test_driver.o
 MAINOBJECT = depot_main_driver.o
 OBJS = shortcut.o stack.o test_depot.o depot.o memcheck.o
 
-#DOXY            = /Applications/Doxygen/Doxygen.app/Contents/Resources/doxygen
+DOXY            = /Applications/Doxygen/Doxygen.app/Contents/Resources/doxygen
 
 all: $(PROGRAM)
 	./$(PROGRAM)
@@ -23,8 +23,7 @@ $(TEST): $(OBJS) $(TESTOBJECT)
 $(PROGRAM): $(OBJS) $(MAINOBJECT)
 	$(CCLINK) -o $@ $(LDOPTIONS) $(OBJS) $(MAINOBJECT)
 
-#.PHONY: clean cleanall doxy test setsample setassignment definesample defineassignment assignmentfolder
-.PHONY: clean cleanall test setsample setassignment definesample defineassignment assignmentfolder
+.PHONY: clean cleanall doxy test setsample setassignment definesample defineassignment assignmentfolder
 
 clean:
 	rm -f $(PROGRAM) $(TEST) $(TESTOBJECT) $(MAINOBJECT) $(OBJS)
