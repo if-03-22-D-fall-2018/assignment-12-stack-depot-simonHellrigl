@@ -81,3 +81,4 @@ Temporary Items
 
 # End of https://www.gitignore.io/api/c++,linux,macos
 test_depot
+depot_prg
