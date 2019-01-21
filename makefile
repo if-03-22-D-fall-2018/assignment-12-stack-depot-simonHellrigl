@@ -69,8 +69,9 @@ defineassignment:
 
 # creates a folder which can serve as a publishable assignment
 assignmentfolder:
+	make setsample
+	make doxy
 	make setassignment
-	#make doxy
 	mkdir ../assignment
 	cp -R * ../assignment
 	rm ../assignment/*.sample
