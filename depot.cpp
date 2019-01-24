@@ -8,7 +8,9 @@ struct DepotImplementation{
 
 Depot create_depot()
 {
-
+    Depot depot = (Depot) smalloc(sizeof(DepotImplementation));
+	depot->stack_of_stacks = create_stack();
+    return depot;
 }
 
 /**
@@ -17,6 +19,12 @@ Depot create_depot()
  */
 void delete_depot(Depot depot)
 {
+    /*counter = 0;
+    while (counter <= depot->stack_of_stacks->len)
+    {
+        /* code */
+    }*/
+
 
 }
 
@@ -36,6 +44,7 @@ void push_depot(Depot depot, Product *product)
  */
 int get_count(Depot depot)
 {
+    return 0;
 
 }
 

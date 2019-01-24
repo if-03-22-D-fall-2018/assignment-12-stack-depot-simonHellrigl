@@ -7,7 +7,7 @@ struct Node {
 
 struct StackImplementation {
     struct Node* head;
-    int count;
+    int len;
 };
 
 /**
@@ -18,7 +18,7 @@ Stack create_stack()
 {
     Stack stack = (Stack) smalloc(sizeof(StackImplementation));
     stack->head = 0;
-    stack->count = 0;
+    stack->len = 0;
     return stack;
 
 }
@@ -30,6 +30,14 @@ Stack create_stack()
  */
 void delete_stack(Stack stack)
 {
+    struct Node* current = stack->head;
+    while (current != 0)
+    {
+        Node* temp = current;
+        current = current->next;
+        sfree(temp);
+    }
+    sfree(stack);
 
 }
 
@@ -40,7 +48,11 @@ void delete_stack(Stack stack)
  */
 void push_stack(Stack stack, void *data)
 {
-
+    Node* toAdd = (Node*) smalloc(sizeof(Node));
+    toAdd->data = data;
+    toAdd->next = stack->head;
+    stack->head = toAdd;
+    stack->len++;
 }
 
 /**
@@ -49,6 +61,7 @@ void push_stack(Stack stack, void *data)
  */
 int get_count(Stack stack)
 {
+    return stack->len;
 
 }
 
@@ -59,6 +72,7 @@ int get_count(Stack stack)
  */
 void* pop_stack(Stack stack)
 {
+    
 
 }
 
