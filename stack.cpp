@@ -72,7 +72,25 @@ int get_count(Stack stack)
  */
 void* pop_stack(Stack stack)
 {
-    
+  if (stack == 0)
+  {
+    return 0;
+  }
+  else
+  {
+    if (stack->len == 0)
+    {
+      return 0;
+    }
+    Node* temp = stack->head;
+    stack->head = temp->next;
+    stack->len--;
+    void* returnElement = temp->data;
+    sfree(temp);
+    return returnElement;
+  }
+
+
 
 }
 
@@ -83,5 +101,21 @@ void* pop_stack(Stack stack)
 */
 void* peek_stack(Stack stack)
 {
+  if (stack == 0)
+  {
+    return 0;
+  }
+  else
+  {
+    if (stack->len == 0)
+    {
+      return 0;
+    }
+    else
+    {
+      return stack->head->data;
+    }
+  }
+
 
 }
