@@ -82,12 +82,15 @@ void* pop_stack(Stack stack)
     {
       return 0;
     }
-    Node* temp = stack->head;
-    stack->head = temp->next;
-    stack->len--;
-    void* returnElement = temp->data;
-    sfree(temp);
-    return returnElement;
+    else
+    {
+      Node* temp = stack->head;
+      stack->head = temp->next;
+      stack->len--;
+      void* returnElement = temp->data;
+      sfree(temp);
+      return returnElement;
+    }
   }
 
 

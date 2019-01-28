@@ -31,12 +31,14 @@ Depot create_depot()
  */
 void delete_depot(Depot depot)
 {
-  while(get_count(depot->stack_of_stacks) != 0)
-  {
-    delete_stack((Stack) pop_stack(depot->stack_of_stacks));
-  }
-  sfree(depot->stack_of_stacks);
-  sfree(depot);
+
+    while(get_count(depot->stack_of_stacks) > 0)
+    {
+      delete_stack((Stack) pop_stack(depot->stack_of_stacks));
+    }
+    sfree(depot->stack_of_stacks);
+    sfree(depot);
+
 
 
 }
@@ -56,12 +58,18 @@ void push_depot(Depot depot, Product *product)
       addToStack(depot, product);
       return;
     }
+
     else if (get_count(current) == STACK_SIZE_LIMIT)
     {
       addToStack(depot, product);
       return;
     }
-    push_stack(current, product);
+
+    else
+    {
+      push_stack(current, product);
+    }
+
   }
 
 }
