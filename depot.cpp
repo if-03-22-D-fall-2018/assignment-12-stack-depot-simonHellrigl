@@ -6,6 +6,18 @@ struct DepotImplementation{
 
 };
 
+static void addToStack(Depot depot, Product *product)
+{
+  if (get_count(depot->stack_of_stacks) >= 0)
+  {
+    Stack temp = create_stack();
+    push_stack(temp, product);
+    push_stack(depot->stack_of_stacks, temp);
+  }
+}
+
+
+
 Depot create_depot()
 {
     Depot depot = (Depot) smalloc(sizeof(DepotImplementation));
@@ -19,11 +31,12 @@ Depot create_depot()
  */
 void delete_depot(Depot depot)
 {
-    /*counter = 0;
-    while (counter <= depot->stack_of_stacks->len)
-    {
-        /* code */
-    }*/
+  while(get_count(depot->stack_of_stacks) != 0)
+  {
+    delete_stack((Stack) pop_stack(depot->stack_of_stacks));
+  }
+  sfree(depot->stack_of_stacks);
+  sfree(depot);
 
 
 }
@@ -35,6 +48,21 @@ void delete_depot(Depot depot)
  */
 void push_depot(Depot depot, Product *product)
 {
+  Stack current = (Stack) peek_stack(depot->stack_of_stacks);
+  if (depot->stack_of_stacks != 0)
+  {
+    if (get_count(depot->stack_of_stacks) == 0)
+    {
+      addToStack(depot, product);
+      return;
+    }
+    else if (get_count(current) == STACK_SIZE_LIMIT)
+    {
+      addToStack(depot, product);
+      return;
+    }
+    push_stack(current, product);
+  }
 
 }
 
@@ -44,8 +72,7 @@ void push_depot(Depot depot, Product *product)
  */
 int get_count(Depot depot)
 {
-    return 0;
-
+    return get_count(depot->stack_of_stacks);
 }
 
 /**
@@ -55,5 +82,23 @@ int get_count(Depot depot)
  */
 Product* pop_depot(Depot depot)
 {
+  Stack current = (Stack) peek_stack(depot->stack_of_stacks);
+  if (get_count(depot->stack_of_stacks) == 0)
+  {
+		return 0;
+  }
+
+	else if (get_count(current) == 1)
+  {
+		current = (Stack) pop_stack(depot->stack_of_stacks);
+		Product *toPop = (Product*) pop_stack(current);
+		delete_stack(current);
+		return toPop;
+	}
+
+  else
+  {
+    return (Product*) pop_stack(current);
+  }
 
 }
